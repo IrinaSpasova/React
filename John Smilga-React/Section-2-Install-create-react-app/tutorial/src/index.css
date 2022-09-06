@@ -15,6 +15,7 @@ body{
   max-width: 1170px;
   margin: 5rem auto;
   display: grid;
+  /*align-items: start;  this reduces cart height in this case*/
   gap: 2rem;
 }
 
@@ -59,3 +60,7 @@ img {
 } 
 
 /*if the library have styles- they will override this css*/
+
+.book p{
+  margin-top: 0.5rem;
+}
