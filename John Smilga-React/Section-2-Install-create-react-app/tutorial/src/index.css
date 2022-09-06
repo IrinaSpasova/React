@@ -65,3 +65,14 @@ img {
   margin-top: 0.5rem;
   margin-top: 0.5rem;
 }
+
+button{
+  padding: 0.5rem;
+  background: #617d98;
+  color: #fcfbfd;
+  margin: 0.8rem 0.5rem 0.5rem 0;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  border: #617d98;
+  box-shadow: 5px 5px 20px #b5b2b2;
+}
