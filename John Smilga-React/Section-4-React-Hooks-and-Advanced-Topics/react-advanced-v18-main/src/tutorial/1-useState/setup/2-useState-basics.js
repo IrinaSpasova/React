@@ -40,3 +40,13 @@ const handleClick = () =>{
 };
 
 export default UseStateBasics;
+
+
+
+const handleClick = () =>{
+  if(text === 'random title'){
+    setText('mrun'); 
+  }else{
+    setText('random title');
+  }
+}
