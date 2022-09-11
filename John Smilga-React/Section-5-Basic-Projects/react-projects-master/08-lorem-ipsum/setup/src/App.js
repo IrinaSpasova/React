@@ -11,8 +11,14 @@ function App() {
     //console.log(count);
 
     let amount = parseInt(count);
+    if (count <= 0) {
+      amount = 1;
+    }
+    if (amount > 8) {
+      amount = 8;
+    }
     //console.log(amount);
-    setText(data);
+    setText(data.slice(0, amount));
   }
 
   return (
