@@ -2,6 +2,11 @@ import React from 'react'
 import { FaBehance, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa'
 export const links = [
   {
+    id: 0,
+    url: '/',
+    text: 'bft',
+  },
+  {
     id: 1,
     url: '/',
     text: 'random',
