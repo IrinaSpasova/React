@@ -5,8 +5,10 @@ const AppContext = React.createContext();
 
 // Import AppProvider in INDEX.JS !!!!
 export const AppProvider = ({ children }) => {
-    const [isSidebarOpen, setSidebarOpen] = useState(true);
-    const [isSubmenuOpen, setSubmenuOpen] = useState(true);
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const [isSubmenuOpen, setSubmenuOpen] = useState(false);
+    const [location, setLocation] = useState({});
+    const [page, setPage] = useState({page:'', links: []});
 
     const openSidebar = () => {
         setSidebarOpen(true);
@@ -14,7 +16,9 @@ export const AppProvider = ({ children }) => {
     const closeSidebar = () => {
         setSidebarOpen(false);
     }
-    const openSubmenu = () => {
+    const openSubmenu = (text, coordinates) => {
+        const page = sublinks.find((link)=> link.page === text);
+        setLocation(coordinates);
         setSubmenuOpen(true);
     }
     const closeSubmenu = () => {
@@ -28,7 +32,9 @@ export const AppProvider = ({ children }) => {
             openSubmenu,
             closeSubmenu,
             openSidebar,
-            closeSidebar}}>
+            closeSidebar,
+            location,
+            }}>
             {children}
         </AppContext.Provider>)
 

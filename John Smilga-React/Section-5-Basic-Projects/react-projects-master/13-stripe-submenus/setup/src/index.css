@@ -390,11 +390,11 @@ Stripe Styles
   display: block;
   width: 0;
   height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid var(--clr-white);
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid var(--clr-white);
   position: absolute;
-  top: -5px;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
 }
