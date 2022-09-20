@@ -4,13 +4,15 @@ import { useFetch } from '../../9-custom-hooks/final/2-useFetch'
 
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
+//import defaultImage from '../../../assets/default-image.jpeg'
 const url = 'https://course-api.com/react-prop-types-example'
 
 const Index = () => {
-  const { products } = useFetch(url)
+  const { products } = useFetch(url);
   return (
     <div>
       <h2>products</h2>
+      {/* <img src={defaultImage} /> */}
       <section className='products'>
         {products.map((product) => {
           return <Product key={product.id} {...product} />
