@@ -227,19 +227,20 @@ main {
   font-size: 1.25rem;
   background: transparent;
   border-color: transparent;
-  margin: 0 0.5rem;
+  margin: 0.5rem 0.5rem;
   transition: var(--transition);
   cursor: pointer;
+  padding-top: 1.5rem;
 }
 .prev-btn:hover,
 .next-btn:hover {
   color: var(--clr-primary-5);
 }
 .random-btn {
-  margin-top: 0.5rem;
+  margin-top: 1.2rem; 
   background: var(--clr-primary-10);
   color: var(--clr-primary-5);
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   text-transform: capitalize;
   border-radius: var(--radius);
   transition: var(--transition);
@@ -249,4 +250,19 @@ main {
 .random-btn:hover {
   background: var(--clr-primary-5);
   color: var(--clr-primary-1);
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 300px) {
+  .button-container {
+    display: block;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+  }
 }
