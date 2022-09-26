@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // import pages
 import Home from './pages/Home'
 import About from './pages/About'
@@ -11,23 +11,16 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
+      <Routes>
+        <Route exact path="/" element={<Home />}/>
 
-        <Route exact path="/">
-          <Home />
-        </Route>
-
-        <Route exact path="/">
-          <Home />
-        </Route>
-
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
+        <Route  path="/about"element={<About />}/>
+        
+        <Route path="/cocktail/:id"element={<SingleCocktail />}/>
+       
+        <Route path="*"element={<Error />}/>
+         
+      </Routes>
 
     </Router>
 
