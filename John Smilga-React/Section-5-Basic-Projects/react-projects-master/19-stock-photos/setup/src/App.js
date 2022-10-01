@@ -19,7 +19,7 @@ function App() {
   const fetchImages = async () => {
     setLoading(true);
     let url;
-    const urlPage = `&page = ${page}`;
+    const urlPage = `&page=${page}`;
     const urlQuery = `&query=${query}`;
 
     if (query) {
