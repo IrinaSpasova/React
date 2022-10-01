@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import Photo from './Photo'
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`
@@ -10,8 +10,10 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
   //const [page, setPage] = useState(1); 3:59 https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/23120900#overview
-  const [page, setPage] = useState(0);
+  // Bug fix 01: const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
+  const mounted = useRef(false);
 
   const fetchImages = async () => {
     setLoading(true);
@@ -28,12 +30,12 @@ function App() {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       //setPhotos(data); 05:7 https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/23120916#overview
       setPhotos((oldPhotos) => {
         if (query && page === 1) {
           return data.results;
-        }else if (query) {
+        } else if (query) {
           return [...oldPhotos, ...data.results]
         } else {
           return [...oldPhotos, ...data]
@@ -50,27 +52,45 @@ function App() {
 
   useEffect(() => {
     fetchImages();
+    // eslint-disable-next-line
   }, [page]);
 
   useEffect(() => {
-    const event = window.addEventListener('scroll', () => {
-      // console.log(`innerHight ${window.innerHeight}`);
-      // console.log(`scrollY ${window.scrollY}`);
-      // console.log(`body Height ${document.body.scrollHeight}`);
-      if (!loading && (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50)) {
-        //console.log('work');   important for timing of loading next portion of images.9:47 https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/23120914#overview
-        setPage((oldPage) => {
-          return oldPage + 1;
-        })
-      }
+    if (!mounted.current) {
+      mounted.current = true;
+      return;
+    }
+    console.log('mryn');
+  }, [])
 
-    });
-    return () => window.removeEventListener('scroll', event)
-  }, []);
+
+  // Bug fix 01:
+  // useEffect(() => {
+  //   const event = window.addEventListener('scroll', () => {
+  //     // console.log(`innerHight ${window.innerHeight}`);
+  //     // console.log(`scrollY ${window.scrollY}`);
+  //     // console.log(`body Height ${document.body.scrollHeight}`);
+  //     if (!loading && (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50)) {
+  //       //console.log('work');   important for timing of loading next portion of images.9:47 https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/23120914#overview
+  //       setPage((oldPage) => {
+  //         return oldPage + 1;
+  //       })
+  //     }
+  //   });
+  //   return () => window.removeEventListener('scroll', event)
+  //   // eslint-disable-next-line
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     //console.log('mrun');
+    // Bug fix 01  setPage(1);
+    if (!query) return;
+
+    if (page === 1) {
+      fetchImages();
+      return;
+    }
     setPage(1);
     //fetchImages();
   }
