@@ -13,6 +13,7 @@ function App() {
   // Bug fix 01: const [page, setPage] = useState(0);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
+  const [newImages, setNewImages] = useState(false);
   const mounted = useRef(false);
 
   const fetchImages = async () => {
@@ -41,10 +42,10 @@ function App() {
           return [...oldPhotos, ...data]
         }
       })
+      setNewImages(false);
       setLoading(false);
-
-
     } catch (error) {
+      setNewImages(false);
       setLoading(false);
       // console.log(error);
     }
@@ -60,7 +61,21 @@ function App() {
       mounted.current = true;
       return;
     }
-    console.log('mryn');
+   // console.log('second');
+   if(!newImages) return;
+   if(loading) return;
+   setPage((oldPage)=> oldPage+1)
+  }, [newImages])
+
+
+  const event = () => {
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 50) {
+      setNewImages(true);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', event);
+    return ()=>window.removeEventListener('scroll', event);
   }, [])
 
 
