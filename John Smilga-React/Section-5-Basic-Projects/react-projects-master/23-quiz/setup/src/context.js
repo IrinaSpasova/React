@@ -5,6 +5,7 @@ const table = {
   sports: 21,
   history: 23,
   politics: 24,
+  art:25,
 }
 
 const API_ENDPOINT = 'https://opentdb.com/api.php?'
