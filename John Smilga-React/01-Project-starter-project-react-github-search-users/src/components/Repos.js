@@ -8,14 +8,16 @@ const Repos = () => {
 
   let languages = repos.reduce((total, item) => {
     //console.log(item);
-    const { language } = item;
+    const { language, stargazers_count } = item;
     if (!language) return total;
     //test: total['random']=30;
     if (!total[language]) {
       // test: total[language]=1;
       total[language] = {
         label: language,
-        value: 1
+        value: 1,
+        stars: stargazers_count
+
       };
     } else {
       // test total[language] = total[language] + 1;
@@ -24,6 +26,7 @@ const Repos = () => {
       total[language] = {
         ...total[language],
         value: total[language].value + 1,
+        stars: total[language].stars + stargazers_count,
       };
     }
     //console.log(language);
@@ -34,38 +37,57 @@ const Repos = () => {
   //console.log(languages);
 
   // we want to show only 5 languages most used by user:
-  languages = Object.values(languages).sort((a, b) => {
+  // languages = Object.values(languages).sort((a, b) => {
+  //   return b.value - a.value; -this will return highest value first
+  // }).slice(0, 5); -this will return top 5
+  //console.log(languages);
+
+
+  //most popular languages:
+  const mostUsed = Object.values(languages).sort((a, b) => {
     return b.value - a.value; //this will return highest value first
-  }).slice(0, 5); //this will return top 5
+  }).slice(0, 5);
+  //console.log(mostUsed);
 
+  //most stars per language:
+  const mostPopular = Object
+    .values(languages)
+    .sort((a, b) => {
+      return b.stars - a.stars;
+    })
+    .map((item) => {
+      return { ...item, value: item.stars }
+    })
+    .slice(0, 5);
+  // console.log(mostPopular);
 
-  console.log(languages);
-
-  // not needed after languages dynamic data 
-  // const chartData = [
-  //   {
-  //     label: "HTML",
-  //     value: "13"
-  //   },
-  //   {
-  //     label: "Css",
-  //     value: "25"
-  //   },
-  //   {
-  //     label: "JS",
-  //     value: "60"
-  //   },
-  // ];
+  // not needed after dynamic data: 
+  const chartData = [
+    {
+      label: "HTML",
+      value: "13"
+    },
+    {
+      label: "Css",
+      value: "25"
+    },
+    {
+      label: "JS",
+      value: "60"
+    },
+  ];
 
 
   return (
     <section className="section">
       <Wrapper className='section-center'>
         {/* <ExampleChart data={chartData}/> */}
-        <Pie3D data={languages} />
+        <Pie3D data={mostUsed} />
+        <div></div>
+        <Doughnut2D data={mostPopular} />
+        <div></div>
       </Wrapper>
     </section>
-
   );
 };
 
