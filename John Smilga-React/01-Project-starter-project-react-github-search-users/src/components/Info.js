@@ -7,9 +7,9 @@ import { FiUsers, FiUserPlus } from 'react-icons/fi';
 const UserInfo = () => {
   const { githubUser } = React.useContext(GithubContext);
   const { public_repos, followers, following, public_gists } = githubUser;
-  console.log(public_repos);
+  //console.log(public_repos);
   const data = React.useContext(GithubContext);
-  console.log(data);
+  //console.log(data);
 
   const items = [
     {
@@ -43,14 +43,14 @@ const UserInfo = () => {
   ]
 
   return (
-  <section className="section">
-    <Wrapper className='section-center'>
-      {items.map((item)=>{
-        return <p><Item key = {item.id} {...item}></Item></p>
-      })}
-    </Wrapper>
-  </section>
-    );
+    <section className='section'>
+      <Wrapper className='section-center'>
+        {items.map((item) => {
+          return <Item key={item.id} {...item}></Item>;
+        })}
+      </Wrapper>
+    </section>
+  );
 };
 
 const Item =({icon,label,color,value})=>{
@@ -61,7 +61,7 @@ const Item =({icon,label,color,value})=>{
   <p>{label}</p>
 </div>
   </article>)
-}
+};
 
 const Wrapper = styled.section`
   display: grid;

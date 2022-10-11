@@ -62,7 +62,7 @@ const Wrapper = styled.article`
       border: 1px solid var(--clr-primary-2);
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--clr-primary-5); 
+    background: var(--clr-primary-4); 
     border-radius: 4px;
     border: 1px solid var(--clr-primary-2);
   }

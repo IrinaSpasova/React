@@ -59,11 +59,14 @@ Global Styles
 ===============
 */
 
-/* this works in FF only:*/
-
 html {
+  /* this works in FF only:*/
   scrollbar-color: var(--clr-grey-3) #eee;
   scrollbar-width: thin;
+  /* евентуално и на вътрешните компоненти ще трябва да вкараш това:
+scrollbar-width: thin;
+
+щото лисичката не копира този стил навътре по чайлдовете ама цвета го пази*/
 }
 
 *,
