@@ -4,9 +4,32 @@ import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
   const {repos} = React.useContext(GithubContext);
-  
+console.log(repos);
 
-  return <h2>repos component</h2>;
+const chartData = [
+  {
+    label: "HTML",
+    value: "13"
+  },
+  {
+    label: "Css",
+    value: "25"
+  },
+  {
+    label: "JS",
+    value: "60"
+  },
+];
+
+
+  return (
+    <section className="section">
+      <Wrapper className='section-center'>
+         {/* <ExampleChart data={chartData}/> */}
+      </Wrapper>
+    </section>
+ 
+    );
 };
 
 const Wrapper = styled.div`

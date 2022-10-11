@@ -32,6 +32,7 @@ const Followers = () => {
 };
 
 const Wrapper = styled.article`
+
   background: var(--clr-white);
   border-top-right-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
@@ -54,7 +55,17 @@ const Wrapper = styled.article`
     font-size: 1rem;
   }
   .followers {
-    overflow: scroll;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 15px;
+      border-radius: 4px;
+      border: 1px solid var(--clr-primary-2);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--clr-primary-5); 
+    border-radius: 4px;
+    border: 1px solid var(--clr-primary-2);
+  }
     height: 260px;
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));

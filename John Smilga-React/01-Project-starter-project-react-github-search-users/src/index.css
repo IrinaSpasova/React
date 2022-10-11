@@ -59,6 +59,13 @@ Global Styles
 ===============
 */
 
+/* this works in FF only:*/
+
+html {
+  scrollbar-color: var(--clr-grey-3) #eee;
+  scrollbar-width: thin;
+}
+
 *,
 ::after,
 ::before {
