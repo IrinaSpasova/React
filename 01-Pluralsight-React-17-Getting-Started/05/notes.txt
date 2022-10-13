@@ -1,0 +1,1 @@
+we can call number with Number("value of the number (1,58,92 ets.");
