@@ -7,6 +7,7 @@ const Repos = () => {
   //console.log(repos);
 
   let languages = repos.reduce((total, item) => {
+    // 04:40 https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/21054962#overview :
     //console.log(item);
     const { language, stargazers_count } = item;
     if (!language) return total;
