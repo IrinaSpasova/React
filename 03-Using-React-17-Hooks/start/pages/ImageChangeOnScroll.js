@@ -8,7 +8,8 @@ const ImageChangeOnScroll = () => {
   useEffect(() => {
     window.document.title = `SpeakerId: ${currentSpeakerId}`;
     console.log(`useEffect: setting title to ${currentSpeakerId}`);
-  });
+  }, [currentSpeakerId]);
+  //}, []);
 
   return (
     <div>
