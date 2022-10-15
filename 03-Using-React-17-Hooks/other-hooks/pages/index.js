@@ -1,3 +1,15 @@
+import React from 'react';
+import App from '../src/App.js';
+
+function index() {
+  return <App pageName="Home" />;
+}
+
+export default index;
+
+/*
+From the start of this part of the course
+
 import React, { useEffect, useState } from 'react';
 
 const InputElement = () => {
@@ -31,3 +43,6 @@ const InputElement = () => {
 };
 
 export default InputElement;
+
+
+*/
