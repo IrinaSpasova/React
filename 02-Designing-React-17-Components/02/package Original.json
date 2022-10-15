@@ -1,7 +1,7 @@
 {
-  "name": "01",
+  "name": "designing-react-components-pluralsight-course",
   "version": "1.0.0",
-  "description": "",
+  "description": "example code",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -12,10 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.1.2",
-    "next": "^12.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "axios": "^0.21.1",
+    "next": "^10.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-placeholder": "^4.1.0"
   }
 }
