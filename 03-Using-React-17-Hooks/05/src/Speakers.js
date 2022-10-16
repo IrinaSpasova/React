@@ -18,7 +18,9 @@ const Speakers = ({}) => {
   const [speakingSaturday, setSpeakingSaturday] = useState(true);
   const [speakingSunday, setSpeakingSunday] = useState(true);
 
-  const [speakerList, dispatch] = useReducer(speakersReducer, []);
+  const [stateObject, dispatch] = useReducer(speakersReducer, []);
+  const isLoading = stateObject.isLoading;
+  const speakerList = stateObject.speakerList;
 
   const [isLoading, setIsLoading] = useState(true);
 
