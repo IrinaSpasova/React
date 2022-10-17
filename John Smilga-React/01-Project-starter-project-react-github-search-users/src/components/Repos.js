@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { GithubContext } from '../context/context';
-import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+import React from "react";
+import styled from "styled-components";
+import { GithubContext } from "../context/context";
+import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from "./Charts";
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
   //console.log(repos);
@@ -17,8 +17,7 @@ const Repos = () => {
       total[language] = {
         label: language,
         value: 1,
-        stars: stargazers_count
-
+        stars: stargazers_count,
       };
     } else {
       // test total[language] = total[language] + 1;
@@ -34,7 +33,7 @@ const Repos = () => {
 
     //always should return in reduce:
     return total;
-  }, {})
+  }, {});
   //console.log(languages);
 
   // we want to show only 5 languages most used by user:
@@ -43,50 +42,67 @@ const Repos = () => {
   // }).slice(0, 5); -this will return top 5
   //console.log(languages);
 
-
   //most popular languages:
-  const mostUsed = Object.values(languages).sort((a, b) => {
-    return b.value - a.value; //this will return highest value first
-  }).slice(0, 5);
+  const mostUsed = Object.values(languages)
+    .sort((a, b) => {
+      return b.value - a.value; //this will return highest value first
+    })
+    .slice(0, 5);
   //console.log(mostUsed);
 
   //most stars per language:
-  const mostPopular = Object
-    .values(languages)
+  const mostPopular = Object.values(languages)
     .sort((a, b) => {
       return b.stars - a.stars;
     })
     .map((item) => {
-      return { ...item, value: item.stars }
+      return { ...item, value: item.stars };
     })
     .slice(0, 5);
   // console.log(mostPopular);
 
-  // not needed after dynamic data: 
-  const chartData = [
-    {
-      label: "HTML",
-      value: "13"
+  // stars, forks
+  let { stars, forks } = repos.reduce(
+    (total, item) => {
+      const { stargazers_count, name, forks } = item;
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      total.forks[forks] = { label: name, value: forks };
+      return total;
     },
     {
-      label: "Css",
-      value: "25"
-    },
-    {
-      label: "JS",
-      value: "60"
-    },
-  ];
+      stars: {},
+      forks: {},
+    }
+  );
+  //console.log(stars);
+  stars = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
+  //console.log(stars);
 
+  // not needed after dynamic data:
+  // const chartData = [
+  //   {
+  //     label: "HTML",
+  //     value: "13",
+  //   },
+  //   {
+  //     label: "Css",
+  //     value: "25",
+  //   },
+  //   {
+  //     label: "JS",
+  //     value: "60",
+  //   },
+  // ];
 
   return (
     <section className="section">
-      <Wrapper className='section-center'>
+      <Wrapper className="section-center">
         {/* <ExampleChart data={chartData}/> */}
         <Pie3D data={mostUsed} />
-        <Column3D data={chartData} />        
+        <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />
-        <Bar3D data={chartData} /> 
+        <Bar3D data={forks} />
       </Wrapper>
     </section>
   );
