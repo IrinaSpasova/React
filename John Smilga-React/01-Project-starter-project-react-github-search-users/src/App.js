@@ -1,27 +1,25 @@
-import React from 'react';
-import { Dashboard, Login, PrivateRoute, AuthWrapper, Error } from './pages';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Dashboard, Login, PrivateRoute, AuthWrapper, Error } from "./pages";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <AuthWrapper>
       <Router>
-        <Switch>
-        <Route path="/" exact={true}>
-          {/* exact={true} removes home from login 05:45 https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/21054738?start=45#overview*/}
-          <Dashboard></Dashboard>
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="*" >
-          <Error />
-        </Route>
-        </Switch>
-        
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
       </Router>
-{/* Switch 1:45 https://www.udemy.com/course/react-tutorial-and-projects-course/learn/lecture/21054760#overview */}
-    </div>
+    </AuthWrapper>
   );
 }
 
