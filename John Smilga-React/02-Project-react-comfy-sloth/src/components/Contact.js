@@ -6,22 +6,28 @@ const Contact = () => {
     <Wrapper>
       <div className="section-center">
         <h3>Join our newsletter and get 20% off</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
-          corrupti, facilis tenetur ut cumque, eveniet porro pariatur quaerat
-          saepe autem repellat facere quae earum! Laboriosam maxime aliquid quis
-          magnam suscipit.
-        </p>
-        <form className="contact-form">
-          <input
-            type="email"
-            className="form-input"
-            placeholder="enter email"
-          />
-          <button type="submit" className="submit-btn">
-            subscribe
-          </button>
-        </form>
+        <div className="content">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+            veniam repudiandae vel ab id, fuga praesentium nobis natus ipsam
+            vero?
+          </p>
+          <form
+            className="contact-form"
+            action="https://formspree.io/f/mzbwkbnv"
+            method="POST"
+          >
+            <input
+              type="email"
+              className="form-input"
+              placeholder="enter email"
+              name="_replyto"
+            />
+            <button type="submit" className="submit-btn">
+              subscribe
+            </button>
+          </form>
+        </div>
       </div>
     </Wrapper>
   );
