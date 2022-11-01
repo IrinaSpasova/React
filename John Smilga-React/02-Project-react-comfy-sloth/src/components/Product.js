@@ -15,7 +15,8 @@ const Product = ({ image, name, price, id }) => {
       </div>
       <footer>
         <h5>{name}</h5>
-        <p>{price}</p>
+        {/* price is shown in cents by default, use function to transform it! */}
+        <p>{formatPrice(price)}</p>
       </footer>
     </Wrapper>
   );
