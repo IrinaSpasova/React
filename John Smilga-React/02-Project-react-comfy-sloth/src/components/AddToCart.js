@@ -110,6 +110,10 @@ const Wrapper = styled.section`
   }
 
   .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //padding-left: 1.3rem;
     margin-top: 1rem;
     width: 140px;
   }
